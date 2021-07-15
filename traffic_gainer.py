@@ -6,7 +6,7 @@ from random import randint, sample
 import time
 from nordvpn_switcher import initialize_VPN,rotate_VPN
 import articles
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
+from selenium.common.exceptions import TimeoutException, NoSuchElementException , WebDriverException
 class WebDriverChrome(object):
 
     def __init__(self):
@@ -108,21 +108,17 @@ if __name__ == '__main__':
         try:
             rotate_VPN(instructions) #refer to the instructions variable here
         except:
-            subprocess.run(command,stdout=subprocess.PIPE,stdin=subprocess.PIPE)
-            break
-
-        try:
-            Crawl = WebDriverChrome()
-            time.sleep(5)
-            Crawl.RunStart()
-            Craw2 = WebDriverChrome()
-            Craw2.RunStart()
-            time.sleep(5)
-            Craw3 = WebDriverChrome()
-            Craw3.RunStart()
-            time.sleep(5)
-        except (NoSuchElementException) as error:
-            print(error)
+            instructions = initialize_VPN(area_input=['Vietnam','Hong Kong','Singapore'], skip_settings=1)
             continue
+            # subprocess.run(command,stdout=subprocess.PIPE,stdin=subprocess.PIPE)
+            # break
+        for i in range(4):
+                try:
+                    Crawl = WebDriverChrome()
+                    time.sleep(5)
+                    Crawl.RunStart()
+                except (WebDriverException, TimeoutException,NoSuchElementException) as error:
+                    print(error)
+                    continue
     vdisplay.stop()
     subprocess.run(command,stdout=subprocess.PIPE,stdin=subprocess.PIPE)
