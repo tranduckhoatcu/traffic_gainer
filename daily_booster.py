@@ -38,9 +38,9 @@ class WebDriverChrome(object):
     
     def scroll_down(self):
         time.sleep(1)
-        for i in range(6):
-            self.driver.execute_script("window.scrollBy(0,"+str(randint(600,800))+");")
-            time.sleep(1)    
+        for i in range(10):
+            self.driver.execute_script("window.scrollBy(0,"+str(randint(1000,2000))+");")
+            time.sleep(1.25)    
 
     def scroll_in_article(self):
         time.sleep(1)
@@ -89,8 +89,9 @@ if __name__ == '__main__':
     vdisplay = Xvfb(width=800, height=1280)
     instructions = initialize_VPN(area_input=['Vietnam','Hong Kong','Singapore'], skip_settings=1)
     
-    vdisplay.start()
+
     for i in range(50):
+        vdisplay.start()
         try:
             rotate_VPN(instructions) #refer to the instructions variable here
         except:
@@ -106,5 +107,5 @@ if __name__ == '__main__':
                 except (WebDriverException, TimeoutException,NoSuchElementException) as error:
                     print(error)
                     continue
-    vdisplay.stop()
+        vdisplay.stop()
     subprocess.run(command,stdout=subprocess.PIPE,stdin=subprocess.PIPE)
