@@ -4,13 +4,12 @@ import undetected_chromedriver.v2 as webdriver
 from random import randint, sample
 import time
 from nordvpn_switcher import initialize_VPN,rotate_VPN
+import articles
 
 class WebDriverChrome(object):
 
     def __init__(self):
-        self.url_article = ['/5-mon-decor-gia-re-nhung-loi-hai-chi-vai-chuc-nghin-ma-ho-bien-ban-hoc-ban-lam-viec-dep-xin-han-20210711134458634.chn',
-        '/cam-nang-do-an-vat-muji-ngon-nhat-cho-team-hao-ngot-khong-phai-mon-dat-may-mon-29k-moi-la-dinh-cua-chop-20210710131523614.chn',
-        '/6-dich-vu-di-cho-ho-chat-luong-nhat-tai-sai-gon-luc-nay-nhieu-nha-se-can-lam-day-2021071109563808.chn']
+        self.url_article = articles.url
         self.url_home = ['/xem-mua-luon.chn','/hello-genz.html']
         self.driver = self.StartWebdriver()
 
