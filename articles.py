@@ -6,6 +6,10 @@ url =[
     '/5-mon-phu-kien-xinh-xiu-ban-khong-biet-minh-can-cho-den-khi-nhin-thay-cung-nhat-la-chiec-tay-meo-boc-goc-ban-2021071317201998.chn',
 ]
 
+daily_url = [
+    '/em-bep-gas-han-quoc-xinh-nhu-cuc-keo-dang-gay-me-hoi-food-blogger-chau-a-ngam-ma-chi-muon-ruoc-ve-ngay-20210711180433163.chn',
+    '/5-mon-phu-kien-xinh-xiu-ban-khong-biet-minh-can-cho-den-khi-nhin-thay-cung-nhat-la-chiec-tay-meo-boc-goc-ban-2021071317201998.chn',
+]
 
 user_agent = [
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
