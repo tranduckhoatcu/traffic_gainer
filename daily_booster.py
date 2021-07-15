@@ -39,7 +39,7 @@ class WebDriverChrome(object):
     def scroll_down(self):
         time.sleep(1)
         for i in range(6):
-            self.driver.execute_script("window.scrollBy(0,"+str(randint(300,500))+");")
+            self.driver.execute_script("window.scrollBy(0,"+str(randint(600,800))+");")
             time.sleep(1)    
 
     def scroll_in_article(self):
@@ -68,7 +68,7 @@ class WebDriverChrome(object):
 
         self.driver.get('https://kenh14.vn/')
         print('Homepage loaded')
-        time.sleep(5)
+        # time.sleep(5)
         self.scroll_down_up()
         self.driver.find_element_by_xpath('//a[@href="'+self.url_home[0]+'"]').click() # load 'mua xem luon' page
         
