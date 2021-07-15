@@ -1,0 +1,3 @@
+undetected-chromedriver
+nordvpn-switcher
+xvfbwrapper
