@@ -11,7 +11,7 @@ class WebDriverChrome(object):
 
     def __init__(self):
         self.url_article = articles.daily_url
-        self.url_home = ['/xem-mua-luon.chn','/hello-genz.html']
+        self.url_home = ['/xem-mua-luon.chn','/hello-genz.html','/nhom-chu-de/emagazine.chn']
         self.driver = self.StartWebdriver()
 
     def StartWebdriver(self):
@@ -36,6 +36,12 @@ class WebDriverChrome(object):
             time.sleep(1)
         self.driver.execute_script("window.scrollBy(0,"+str(-5000)+");")
     
+    def scroll_down(self):
+        time.sleep(1)
+        for i in range(6):
+            self.driver.execute_script("window.scrollBy(0,"+str(randint(300,500))+");")
+            time.sleep(1)    
+
     def scroll_in_article(self):
         time.sleep(1)
         height = self.driver.find_element_by_xpath("/html/body/form/div[2]/div[2]/div[3]/div[1]/div[3]/div[2]/div/div[1]/div[2]/div/div/div[1]").size['height']
@@ -49,7 +55,7 @@ class WebDriverChrome(object):
         self.driver.execute_script("window.scrollBy(0,"+str(-5000)+");")
     
     def article_process(self, article_url):
-        self.scroll_bottom()
+        self.scroll_down()
         self.driver.find_element_by_xpath('//a[@href="'+article_url+'"]').click() # get article by url
         print('Article loaded')
         self.scroll_in_article()
@@ -70,6 +76,9 @@ class WebDriverChrome(object):
             self.article_process(self.url_article[i])      
 
         self.driver.find_element_by_xpath('//a[@href="'+self.url_home[1]+'"]').click()
+        self.scroll_down_up()
+        
+        self.driver.find_element_by_xpath('//a[@href="'+self.url_home[2]+'"]').click()
         self.scroll_down_up()
         time.sleep(10)
         self.driver.quit()
