@@ -23,7 +23,7 @@ class WebDriverChrome(object):
         # options.add_experimental_option("excludeSwitches", ["disable-popup-blocking"])
         options.add_argument(f'user-agent={secrets.choice(articles.user_agent)}')
         options.add_argument('--no-first-run --no-service-autorun --password-store=basic')
-        options.add_argument('--user-data-dir=/home/test1/.config/google-chrome/Default')
+        options.add_argument('user-data-dir=/home/test1/.config/google-chrome/Default')
         options.add_argument(f"--no-sandbox")
         options.add_argument(f"--disable-dev-shm-usage")
         driver = webdriver.Chrome(options=options)
@@ -81,9 +81,8 @@ class WebDriverChrome(object):
         self.driver.find_element_by_xpath('//a[@href="'+self.url_home[2]+'"]').click()
         self.scroll_down_up()
         time.sleep(10)
-        self.driver_quit()
     
-    def driver_quit(self):
+    def Driver_quit(self):
         self.driver.close()
         self.driver.quit()
 
@@ -109,10 +108,10 @@ if __name__ == '__main__':
                     Crawl = WebDriverChrome()
                     time.sleep(5)
                     Crawl.RunStart()
+                    Crawl.Driver_quit()
                 except (WebDriverException, TimeoutException,NoSuchElementException) as error:
                     print(error)
-                    Crawl.RunStart()
-                    vdisplay.stop()
-                    pass
+                    Crawl.Driver_quit()
+                    continue
         vdisplay.stop()
     subprocess.run(command,stdout=subprocess.PIPE,stdin=subprocess.PIPE)
