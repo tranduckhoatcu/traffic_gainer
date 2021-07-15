@@ -1,11 +1,11 @@
 import subprocess
+import secrets
 from xvfbwrapper import Xvfb
 import undetected_chromedriver.v2 as webdriver
 from random import randint, sample
 import time
 from nordvpn_switcher import initialize_VPN,rotate_VPN
 import articles
-from selenium.common.exceptions import TimeoutException, NoSuchElementException, WebDriverException
 
 class WebDriverChrome(object):
 
@@ -21,9 +21,9 @@ class WebDriverChrome(object):
         # options.add_experimental_option("excludeSwitches", ["enable-automation"])
         # options.add_experimental_option("useAutomationExtension", False)
         # options.add_experimental_option("excludeSwitches", ["disable-popup-blocking"])
-        # options.add_argument(f'user-agent={self.user_agent.random}')
+        options.add_argument(f'user-agent={secrets.choice(articles.user_agent)}')
         options.add_argument('--no-first-run --no-service-autorun --password-store=basic')
-        options.user_data_dir = f'/home/test1/.config/google-chrome/Default'
+        options.add_argument('--user-data-dir=/home/test1/.config/google-chrome/Default')
         options.add_argument(f"--no-sandbox")
         options.add_argument(f"--disable-dev-shm-usage")
         driver = webdriver.Chrome(options=options)
@@ -64,11 +64,11 @@ class WebDriverChrome(object):
             time.sleep(randint(1,2))
         self.driver.execute_script("window.scrollBy(0,"+str(-5000)+");")
     
-    def load_homepage(self):
-        self.driver.get('https://kenh14.vn/')
-        print('Homepage loaded')
-        self.scroll_down_up()
-        self.driver.find_element_by_xpath('//a[@href="'+self.url_home[0]+'"]').click() # load 'mua xem luon' page
+    # def load_homepage(self):
+        # self.driver.get('https://kenh14.vn/')
+        # print('Homepage loaded')
+        # self.scroll_down_up()
+        # self.driver.find_element_by_xpath('//a[@href="'+self.url_home[0]+'"]').click() # load 'mua xem luon' page
 
     def article_process(self, article_url):
         self.scroll_bottom()
@@ -81,7 +81,12 @@ class WebDriverChrome(object):
     def RunStart(self):
         temp_url = sample(self.url_article , len(self.url_article))
         self.url_article = temp_url
-        self.load_homepage()
+        # self.load_homepage()
+        self.driver.get('https://kenh14.vn/')
+        print('Homepage loaded')
+        time.sleep(5)
+        self.scroll_down_up()
+        self.driver.find_element_by_xpath('//a[@href="'+self.url_home[0]+'"]').click() # load 'mua xem luon' page
         
         for i in range(len(self.url_article)):
             self.article_process(self.url_article[i])      
@@ -95,7 +100,7 @@ class WebDriverChrome(object):
 if __name__ == '__main__':
     command = ['nordvpn','disconnect']
     subprocess.run(command,stdout=subprocess.PIPE,stdin=subprocess.PIPE)
-    vdisplay = Xvfb(width=1080, height=1920)
+    vdisplay = Xvfb(width=800, height=1280)
     instructions = initialize_VPN(area_input=['Vietnam','Hong Kong','Singapore'], skip_settings=1)
     
     for i in range(20):
@@ -117,7 +122,7 @@ if __name__ == '__main__':
             Crawl = WebDriverChrome()
             Crawl.RunStart()
             time.sleep(5)
-        except (NoSuchElementException, TimeoutException, WebDriverException) as error:
-            print(error)
+        except:
             subprocess.run(command,stdout=subprocess.PIPE,stdin=subprocess.PIPE)
+            break
         vdisplay.stop()
