@@ -103,25 +103,26 @@ if __name__ == '__main__':
     vdisplay = Xvfb(width=800, height=1280)
     instructions = initialize_VPN(area_input=['Vietnam','Hong Kong','Singapore'], skip_settings=1)
     
+    vdisplay.start()
     for i in range(50):
         try:
             rotate_VPN(instructions) #refer to the instructions variable here
         except:
             subprocess.run(command,stdout=subprocess.PIPE,stdin=subprocess.PIPE)
             break
-        vdisplay.start()
+
         try:
             Crawl = WebDriverChrome()
             time.sleep(5)
             Crawl.RunStart()
-            Crawl = WebDriverChrome()
-            Crawl.RunStart()
+            Craw2 = WebDriverChrome()
+            Craw2.RunStart()
             time.sleep(5)
-            Crawl = WebDriverChrome()
-            Crawl.RunStart()
+            Craw3 = WebDriverChrome()
+            Craw3.RunStart()
             time.sleep(5)
         except (NoSuchElementException) as error:
             print(error)
             continue
-            # subprocess.run(command,stdout=subprocess.PIPE,stdin=subprocess.PIPE)
-        vdisplay.stop()
+    vdisplay.stop()
+    subprocess.run(command,stdout=subprocess.PIPE,stdin=subprocess.PIPE)
