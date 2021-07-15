@@ -23,7 +23,7 @@ class WebDriverChrome(object):
         # options.add_experimental_option("excludeSwitches", ["disable-popup-blocking"])
         # options.add_argument(f'user-agent={self.user_agent.random}')
         options.add_argument('--no-first-run --no-service-autorun --password-store=basic')
-        options.user_data_dir = f'/home/test1/.config/google-chrome/Profile 1'
+        options.user_data_dir = f'/home/test1/.config/google-chrome/Default'
         options.add_argument(f"--no-sandbox")
         options.add_argument(f"--disable-dev-shm-usage")
         driver = webdriver.Chrome(options=options)
