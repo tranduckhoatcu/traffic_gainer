@@ -81,7 +81,12 @@ class WebDriverChrome(object):
         self.driver.find_element_by_xpath('//a[@href="'+self.url_home[2]+'"]').click()
         self.scroll_down_up()
         time.sleep(10)
+        self.driver_quit()
+    
+    def driver_quit(self):
+        self.driver.close()
         self.driver.quit()
+
 
 if __name__ == '__main__':
     command = ['nordvpn','disconnect']
@@ -106,6 +111,8 @@ if __name__ == '__main__':
                     Crawl.RunStart()
                 except (WebDriverException, TimeoutException,NoSuchElementException) as error:
                     print(error)
-                    continue
+                    Crawl.RunStart()
+                    vdisplay.stop()
+                    pass
         vdisplay.stop()
     subprocess.run(command,stdout=subprocess.PIPE,stdin=subprocess.PIPE)
