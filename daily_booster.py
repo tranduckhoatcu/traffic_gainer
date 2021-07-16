@@ -48,7 +48,7 @@ class WebDriverChrome(object):
     def scroll_in_article(self):
         time.sleep(secrets.SystemRandom().uniform(1,1.25))
         height = self.driver.find_element_by_xpath("/html/body/form/div[2]/div[2]/div[3]/div[1]/div[3]/div[2]/div/div[1]/div[2]/div/div/div[1]").size['height']
-        print('Height of article: {height}')
+        print(f'Height of article: {str(height)}')
         count = 0
         while(count < height):
             rand = secrets.SystemRandom().uniform(300,400)
@@ -118,7 +118,7 @@ if __name__ == '__main__':
             # break
         for i in range(5):
                 try:
-                    print('Loop {i}:\n')
+                    print(f'Loop {str(i)}:\n')
                     Crawl = WebDriverChrome()
                     time.sleep(secrets.SystemRandom().uniform(1,1.5))
                     Crawl.RunStart()
