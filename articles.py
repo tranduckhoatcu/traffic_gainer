@@ -4,11 +4,13 @@ url =[
     '/6-dich-vu-di-cho-ho-chat-luong-nhat-tai-sai-gon-luc-nay-nhieu-nha-se-can-lam-day-2021071109563808.chn',
     '/em-bep-gas-han-quoc-xinh-nhu-cuc-keo-dang-gay-me-hoi-food-blogger-chau-a-ngam-ma-chi-muon-ruoc-ve-ngay-20210711180433163.chn',
     '/5-mon-phu-kien-xinh-xiu-ban-khong-biet-minh-can-cho-den-khi-nhin-thay-cung-nhat-la-chiec-tay-meo-boc-goc-ban-2021071317201998.chn',
+    '/4-shop-rau-cu-qua-chat-luong-o-sai-gon-co-shop-ship-trong-ngay-co-shop-mat-vai-ngay-chi-em-nen-luu-y-20210715154253177.chn',
 ]
 
 daily_url = [
     '/em-bep-gas-han-quoc-xinh-nhu-cuc-keo-dang-gay-me-hoi-food-blogger-chau-a-ngam-ma-chi-muon-ruoc-ve-ngay-20210711180433163.chn',
-    '/5-mon-phu-kien-xinh-xiu-ban-khong-biet-minh-can-cho-den-khi-nhin-thay-cung-nhat-la-chiec-tay-meo-boc-goc-ban-2021071317201998.chn',
+    # '/5-mon-phu-kien-xinh-xiu-ban-khong-biet-minh-can-cho-den-khi-nhin-thay-cung-nhat-la-chiec-tay-meo-boc-goc-ban-2021071317201998.chn',
+    '/4-shop-rau-cu-qua-chat-luong-o-sai-gon-co-shop-ship-trong-ngay-co-shop-mat-vai-ngay-chi-em-nen-luu-y-20210715154253177.chn',
 ]
 
 user_agent = [
