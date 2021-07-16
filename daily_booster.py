@@ -2,13 +2,14 @@ import subprocess
 import secrets
 from xvfbwrapper import Xvfb
 import undetected_chromedriver.v2 as webdriver
-from random import randint, sample
 import time
 from nordvpn_switcher import initialize_VPN,rotate_VPN
 import articles
 import os
 import shutil
 from selenium.common.exceptions import TimeoutException, NoSuchElementException , WebDriverException
+
+
 class WebDriverChrome(object):
 
     def __init__(self):
@@ -32,28 +33,28 @@ class WebDriverChrome(object):
         return driver
 
     def scroll_down_up(self):
-        time.sleep(1)
+        time.sleep(secrets.SystemRandom().uniform(1,1.25))
         for i in range(6):
-            self.driver.execute_script("window.scrollBy(0,"+str(randint(300,500))+");")
-            time.sleep(1)
+            self.driver.execute_script("window.scrollBy(0,"+str(secrets.SystemRandom().uniform(350,500))+");")
+            time.sleep(secrets.SystemRandom().uniform(1,1.25))
         self.driver.execute_script("window.scrollBy(0,"+str(-5000)+");")
     
     def scroll_down(self):
-        time.sleep(1)
+        time.sleep(secrets.SystemRandom().uniform(1,1.25))
         for i in range(10):
-            self.driver.execute_script("window.scrollBy(0,"+str(randint(1000,2000))+");")
-            time.sleep(1.25)    
+            self.driver.execute_script("window.scrollBy(0,"+str(secrets.SystemRandom().uniform(1200,2000))+");")
+            time.sleep(secrets.SystemRandom().uniform(1,1.25))    
 
     def scroll_in_article(self):
-        time.sleep(1)
+        time.sleep(secrets.SystemRandom().uniform(1,1.25))
         height = self.driver.find_element_by_xpath("/html/body/form/div[2]/div[2]/div[3]/div[1]/div[3]/div[2]/div/div[1]/div[2]/div/div/div[1]").size['height']
-        print(height)
+        print('Height of article: {height}')
         count = 0
         while(count < height):
-            rand = randint(200,400)
+            rand = secrets.SystemRandom().uniform(300,400)
             self.driver.execute_script("window.scrollBy(0,"+str(rand)+");")
             count += rand
-            time.sleep(randint(1,2))
+            time.sleep(secrets.SystemRandom().uniform(1,2))
         self.driver.execute_script("window.scrollBy(0,"+str(-5000)+");")
     
     def article_process(self, article_url):
@@ -65,7 +66,7 @@ class WebDriverChrome(object):
 
 
     def RunStart(self):
-        temp_url = sample(self.url_article , len(self.url_article))
+        temp_url = secrets.SystemRandom().sample(self.url_article , len(self.url_article))
         self.url_article = temp_url
 
         self.driver.get('https://kenh14.vn/')
@@ -82,7 +83,7 @@ class WebDriverChrome(object):
         
         self.driver.find_element_by_xpath('//a[@href="'+self.url_home[2]+'"]').click()
         self.scroll_down_up()
-        time.sleep(10)
+        time.sleep(secrets.SystemRandom().uniform(5,10))
     
     def Driver_quit(self):
         self.driver.close()
@@ -90,8 +91,14 @@ class WebDriverChrome(object):
 
 
 if __name__ == '__main__':
-    os.remove('/home/test1/.config/google-chrome/Default/Default/Preferences')
-    shutil.copy('Default/Preferences','/home/test1/.config/google-chrome/Default/Default/')
+    try:
+        os.remove('/home/test1/.config/google-chrome/Default/Default/Preferences')
+        shutil.copy('Default/Preferences','/home/test1/.config/google-chrome/Default/Default/')
+        print('Cache Removed')
+    except:
+        shutil.copy('Default/Preferences','/home/test1/.config/google-chrome/Default/Default/')
+        print('Cache Removed')
+    
     command = ['nordvpn','disconnect']
     subprocess.run(command,stdout=subprocess.PIPE,stdin=subprocess.PIPE)
     vdisplay = Xvfb(width=800, height=1280)
@@ -111,8 +118,9 @@ if __name__ == '__main__':
             # break
         for i in range(5):
                 try:
+                    print('Loop {i}:\n')
                     Crawl = WebDriverChrome()
-                    time.sleep(5)
+                    time.sleep(secrets.SystemRandom().uniform(1,1.5))
                     Crawl.RunStart()
                     Crawl.Driver_quit()
                 except (WebDriverException, TimeoutException,NoSuchElementException) as error:
