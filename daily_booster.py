@@ -6,6 +6,8 @@ from random import randint, sample
 import time
 from nordvpn_switcher import initialize_VPN,rotate_VPN
 import articles
+import os
+import shutil
 from selenium.common.exceptions import TimeoutException, NoSuchElementException , WebDriverException
 class WebDriverChrome(object):
 
@@ -88,6 +90,8 @@ class WebDriverChrome(object):
 
 
 if __name__ == '__main__':
+    os.remove('/home/test1/.config/google-chrome/Default/Default/Preferences')
+    shutil.copy('Default/Preferences','/home/test1/.config/google-chrome/Default/Default/')
     command = ['nordvpn','disconnect']
     subprocess.run(command,stdout=subprocess.PIPE,stdin=subprocess.PIPE)
     vdisplay = Xvfb(width=800, height=1280)
@@ -95,6 +99,8 @@ if __name__ == '__main__':
     
 
     for i in range(50):
+        os.remove('/home/test1/.config/google-chrome/Default/Default/Preferences')
+        shutil.copy('Default/Preferences','/home/test1/.config/google-chrome/Default/Default/')
         vdisplay.start()
         try:
             rotate_VPN(instructions) #refer to the instructions variable here
