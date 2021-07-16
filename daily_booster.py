@@ -117,8 +117,8 @@ if __name__ == '__main__':
             # subprocess.run(command,stdout=subprocess.PIPE,stdin=subprocess.PIPE)
             # break
         for i in range(5):
+                print(f'Loop {str(i)}:\n')
                 try:
-                    print(f'Loop {str(i)}:\n')
                     Crawl = WebDriverChrome()
                     time.sleep(secrets.SystemRandom().uniform(1,1.5))
                     Crawl.RunStart()
@@ -127,5 +127,6 @@ if __name__ == '__main__':
                     print(error)
                     Crawl.Driver_quit()
                     continue
+                print('\n')
         vdisplay.stop()
     subprocess.run(command,stdout=subprocess.PIPE,stdin=subprocess.PIPE)
