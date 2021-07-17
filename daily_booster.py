@@ -102,7 +102,7 @@ if __name__ == '__main__':
     command = ['nordvpn','disconnect']
     subprocess.run(command,stdout=subprocess.PIPE,stdin=subprocess.PIPE)
     vdisplay = Xvfb(width=800, height=1280)
-    instructions = initialize_VPN(area_input=['Vietnam','Hong Kong','Singapore'], skip_settings=1)
+    instructions = initialize_VPN(area_input=['Vietnam','Hong Kong','Singapore','Thailand'], skip_settings=1)
     
 
     for i in range(50):
