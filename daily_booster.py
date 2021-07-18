@@ -7,7 +7,7 @@ from nordvpn_switcher import initialize_VPN,rotate_VPN
 import articles
 import os
 import shutil
-from selenium.common.exceptions import TimeoutException, NoSuchElementException , WebDriverException
+# from selenium.common.exceptions import TimeoutException, NoSuchElementException , WebDriverException
 
 
 class WebDriverChrome(object):
