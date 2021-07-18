@@ -83,7 +83,7 @@ class WebDriverChrome(object):
         
         # self.driver.find_element_by_xpath('//a[@href="'+self.url_home[2]+'"]').click()
         # self.scroll_down_up()
-        time.sleep(secrets.SystemRandom().uniform(5,10))
+        time.sleep(secrets.SystemRandom().uniform(2,4))
     
     def Driver_quit(self):
         self.driver.close()
@@ -123,8 +123,8 @@ if __name__ == '__main__':
                     time.sleep(secrets.SystemRandom().uniform(1,1.5))
                     Crawl.RunStart()
                     Crawl.Driver_quit()
-                except (WebDriverException, TimeoutException,NoSuchElementException) as error:
-                    print(error)
+                except:
+                    # print(error)
                     # Crawl.Driver_quit()
                     continue
                 print('\n')
