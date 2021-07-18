@@ -41,7 +41,7 @@ class WebDriverChrome(object):
     
     def scroll_down(self):
         time.sleep(secrets.SystemRandom().uniform(1,1.25))
-        for i in range(10):
+        for i in range(5):
             self.driver.execute_script("window.scrollBy(0,"+str(secrets.SystemRandom().uniform(1200,2000))+");")
             time.sleep(secrets.SystemRandom().uniform(1,1.25))    
 
@@ -51,7 +51,7 @@ class WebDriverChrome(object):
         print(f'Height of article: {str(height)}')
         count = 0
         while(count < height):
-            rand = secrets.SystemRandom().uniform(300,400)
+            rand = secrets.SystemRandom().uniform(500,700)
             self.driver.execute_script("window.scrollBy(0,"+str(rand)+");")
             count += rand
             time.sleep(secrets.SystemRandom().uniform(1,2))
@@ -69,11 +69,11 @@ class WebDriverChrome(object):
         temp_url = secrets.SystemRandom().sample(self.url_article , len(self.url_article))
         self.url_article = temp_url
 
-        self.driver.get('https://kenh14.vn/')
+        self.driver.get('https://kenh14.vn/'+self.url_home[0])
         print('Homepage loaded')
         # time.sleep(5)
-        self.scroll_down_up()
-        self.driver.find_element_by_xpath('//a[@href="'+self.url_home[0]+'"]').click() # load 'mua xem luon' page
+        # self.scroll_down_up()
+        # self.driver.find_element_by_xpath('//a[@href="'+self.url_home[0]+'"]').click() # load 'mua xem luon' page
         
         for i in range(len(self.url_article)):
             self.article_process(self.url_article[i])      
@@ -81,8 +81,8 @@ class WebDriverChrome(object):
         self.driver.find_element_by_xpath('//a[@href="'+self.url_home[1]+'"]').click()
         self.scroll_down_up()
         
-        self.driver.find_element_by_xpath('//a[@href="'+self.url_home[2]+'"]').click()
-        self.scroll_down_up()
+        # self.driver.find_element_by_xpath('//a[@href="'+self.url_home[2]+'"]').click()
+        # self.scroll_down_up()
         time.sleep(secrets.SystemRandom().uniform(5,10))
     
     def Driver_quit(self):
