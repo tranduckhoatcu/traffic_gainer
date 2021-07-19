@@ -69,10 +69,10 @@ class WebDriverChrome(object):
         temp_url = secrets.SystemRandom().sample(self.url_article , len(self.url_article))
         self.url_article = temp_url
 
-        self.driver.get('https://kenh14.vn/'+self.url_home[0])
+        self.driver.get('https://kenh14.vn/')
         print('Homepage loaded')
         # time.sleep(5)
-        # self.scroll_down_up()
+        self.scroll_down_up()
         # self.driver.find_element_by_xpath('//a[@href="'+self.url_home[0]+'"]').click() # load 'mua xem luon' page
         
         for i in range(len(self.url_article)):
