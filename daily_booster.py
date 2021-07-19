@@ -120,8 +120,8 @@ if __name__ == '__main__':
                 print(f'Loop {str(i)}:\n')
                 try:
                     Crawl = WebDriverChrome()
-                    time.sleep(secrets.SystemRandom().uniform(1,1.5))
                     Crawl.RunStart()
+                    time.sleep(secrets.SystemRandom().uniform(1,1.5))
                     Crawl.Driver_quit()
                 except:
                     # print(error)
