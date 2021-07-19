@@ -73,7 +73,7 @@ class WebDriverChrome(object):
         print('Homepage loaded')
         # time.sleep(5)
         self.scroll_down_up()
-        # self.driver.find_element_by_xpath('//a[@href="'+self.url_home[0]+'"]').click() # load 'mua xem luon' page
+        self.driver.find_element_by_xpath('//a[@href="'+self.url_home[0]+'"]').click() # load 'mua xem luon' page
         
         for i in range(len(self.url_article)):
             self.article_process(self.url_article[i])      
