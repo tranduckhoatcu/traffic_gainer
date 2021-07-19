@@ -14,6 +14,7 @@ daily_url = [
     # '/4-shop-rau-cu-qua-chat-luong-o-sai-gon-co-shop-ship-trong-ngay-co-shop-mat-vai-ngay-chi-em-nen-luu-y-20210715154253177.chn',
     # '/may-pha-cafe-bear-vua-xinh-vua-re-nhung-khi-dung-nen-nang-nhu-nang-trung-nha-anh-chi-em-20210711115315002.chn',
     '/4-dich-vu-mua-thuoc-online-ship-thuoc-tan-nha-dang-tin-cay-o-sai-gon-20210717224627041.chn',
+    '/5-loai-cay-canh-giup-giam-stress-va-thu-hut-van-khi-tot-cay-nao-cung-dep-mat-hop-decor-nha-202107182224017.chn',
 
 ]
 
