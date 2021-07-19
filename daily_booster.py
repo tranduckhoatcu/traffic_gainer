@@ -41,7 +41,7 @@ class WebDriverChrome(object):
     
     def scroll_down(self):
         time.sleep(secrets.SystemRandom().uniform(1,1.25))
-        for i in range(5)):
+        for i in range(5):
             self.driver.execute_script("window.scrollBy(0,"+str(secrets.SystemRandom().uniform(1200,2000))+");")
             time.sleep(secrets.SystemRandom().uniform(1,1.25))    
 
