@@ -125,7 +125,7 @@ if __name__ == '__main__':
                     Crawl.Driver_quit()
                 except:
                     # print(error)
-                    # Crawl.Driver_quit()
+                    Crawl.Driver_quit()
                     continue
                 print('\n')
         vdisplay.stop()
