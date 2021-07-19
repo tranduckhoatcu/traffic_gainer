@@ -41,7 +41,7 @@ class WebDriverChrome(object):
     
     def scroll_down(self):
         time.sleep(secrets.SystemRandom().uniform(1,1.25))
-        for i in range(5):
+        for i in range(10):
             self.driver.execute_script("window.scrollBy(0,"+str(secrets.SystemRandom().uniform(1200,2000))+");")
             time.sleep(secrets.SystemRandom().uniform(1,1.25))    
 
@@ -112,7 +112,7 @@ if __name__ == '__main__':
         try:
             rotate_VPN(instructions) #refer to the instructions variable here
         except:
-            instructions = initialize_VPN(area_input=['Vietnam','Hong Kong','Singapore'], skip_settings=1)
+            instructions = initialize_VPN(area_input=['Vietnam','Hong Kong','Singapore','Thailand'], skip_settings=1)
             continue
             # subprocess.run(command,stdout=subprocess.PIPE,stdin=subprocess.PIPE)
             # break
